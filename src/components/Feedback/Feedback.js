@@ -1,52 +1,45 @@
 // import PropTypes from 'prop-types';
 
 import React, { Component } from 'react';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Statistics } from './Statistics/Statistics';
+import { Notification } from './Notification/Notification';
+import { Section } from './Section/Section';
 
 export class Feedback extends Component {
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-    positive: 0,
-    total: 0,
+    Good: 0,
+    Neutral: 0,
+    Bad: 0,
   };
 
-  handleGood = () => {
+  updateAmountFeedback = option => {
     this.setState(prevState => ({
-      good: prevState.good + 1,
-      total: prevState.total + 1,
+      [option]: prevState[option] + 1,
     }));
   };
 
-  handleNeutral = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-      total: prevState.total + 1,
-    }));
-  };
-  handleBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-      total: prevState.total + 1,
-    }));
+  countTotalFeedback = () => {
+    const { Good, Neutral, Bad } = this.state;
+    return Good + Neutral + Bad;
   };
 
   render() {
     return (
       <div>
-        <span>{this.state.good}</span>
-        <button type="button" onClick={this.handleGood}>
-          handleGood
-        </button>
-        <span>{this.state.neutral}</span>
-        <button type="button" onClick={this.handleNeutral}>
-          handleNeutral
-        </button>
-        <span>{this.state.bad}</span>
-        <button type="button" onClick={this.handleBad}>
-          handleBad
-        </button>
-        <span>{this.state.total}</span>
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={this.state}
+            onLeaveFeedback={this.updateAmountFeedback}
+          />
+        </Section>
+        <Section title="Statistics"></Section>
+
+        {this.countTotalFeedback() > 0 ? (
+          <Statistics options={this.state} />
+        ) : (
+          <Notification message="There is no feedback" />
+        )}
       </div>
     );
   }
