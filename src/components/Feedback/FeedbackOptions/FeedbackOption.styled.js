@@ -1,10 +1,16 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
-// export const ListFriend = styled.ul`
-//   display: flex;
-//   flex-direction: column;
-//   width: fit-content;
-//   justify-content: center;
-//   align-items: center;
-//   margin: 30px auto 0 auto;
-// `;
+export const ListButton = styled.ul`
+  display: inline-flex;
+  justify-content: center;
+  margin: 25px;
+  list-style: none;
+  gap: 20px;
+`;
+
+export const ListItem = styled.li``;
+
+export const Button = styled.button`
+  width: 100px;
+  height: 50px;
+`;

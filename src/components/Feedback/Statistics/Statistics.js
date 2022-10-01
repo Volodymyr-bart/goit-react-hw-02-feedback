@@ -1,13 +1,14 @@
+import { ListOptions, OptionsItem } from './Statistics.styled';
 export const Statistics = ({ options: { Good, Neutral, Bad } }) => {
   const total = Good + Neutral + Bad;
   const positivePercentage = Math.round((Good / total) * 100);
   return (
-    <div>
-      <span>Good:{Good}</span>
-      <span>Neutral:{Neutral}</span>
-      <span>Bad:{Bad}</span>
-      <span>Total{total}</span>
-      <span>Percent{positivePercentage}%</span>
-    </div>
+    <ListOptions>
+      <OptionsItem>Good: {Good}</OptionsItem>
+      <OptionsItem>Neutral: {Neutral}</OptionsItem>
+      <OptionsItem>Bad: {Bad}</OptionsItem>
+      <OptionsItem>Total {total}</OptionsItem>
+      <OptionsItem>Percent {positivePercentage}%</OptionsItem>
+    </ListOptions>
   );
 };
