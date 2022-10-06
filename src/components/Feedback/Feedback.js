@@ -8,9 +8,9 @@ import { Section } from './Section/Section';
 
 export class Feedback extends Component {
   state = {
-    Good: 0,
-    Neutral: 0,
-    Bad: 0,
+    good: 0,
+    neutral: 0,
+    bad: 0,
   };
 
   updateAmountFeedback = option => {
@@ -20,12 +20,12 @@ export class Feedback extends Component {
   };
 
   countTotalFeedback = () => {
-    const { Good, Neutral, Bad } = this.state;
-    return Good + Neutral + Bad;
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
   };
   positivePercentage = () => {
-    const { Good } = this.state;
-    return Math.round((Good / this.countTotalFeedback()) * 100);
+    const { good } = this.state;
+    return Math.round((good / this.countTotalFeedback()) * 100);
   };
 
   render() {
